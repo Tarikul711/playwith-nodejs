@@ -1,0 +1,20 @@
+{
+  "name": "playwith-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tarikul711/playwith-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tarikul711/playwith-nodejs/issues"
+  },
+  "homepage": "https://github.com/Tarikul711/playwith-nodejs#readme"
+}
