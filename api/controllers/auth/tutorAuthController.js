@@ -1,11 +1,12 @@
 const Tutor = require('../../models/tutor/tutorModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-    // exports.signinGetController = (req, res, next) => {
-    //     res.json({
-    //         "message": "signin get controller"
-    //     })
-    // }
+
+exports.signinGetController = (req, res, next) => {
+    res.json({
+        "message": "signin get controller"
+    })
+}
 
 exports.signinPostController = async(req, res, next) => {
     try {
