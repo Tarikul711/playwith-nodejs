@@ -14,8 +14,8 @@ const middleware = [
 ]
 app.use(middleware)
     // routers
+app.use('/api/v1/tutor/profile/', tutorProfileRouter)
 app.use('/api/v1/tutor/', tutorAuthRouter)
-app.use('/api/v1/tutor/', tutorProfileRouter)
 app.get("/", (req, res, next) => {
     res.json({
         "message": "hello world"

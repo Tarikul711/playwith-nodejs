@@ -1,5 +1,7 @@
 const router = require('express').Router()
 
+const checkAuth = require('../../middleware/checkAuth')
+
 const {
     createTutorProfileGetController,
     createTutorProfilePostController,
@@ -7,9 +9,9 @@ const {
     editTutorProfilePostController
 } = require('../../controllers/profile/tutorProfileController')
 
+router.get('/', checkAuth, createTutorProfileGetController)
+router.post('/', createTutorProfilePostController)
+router.get('/edit', editTutorProfileGetController)
+router.post('/edit', editTutorProfilePostController)
 
-
-router.get('/profile', createTutorProfileGetController)
-router.post('/profile', createTutorProfilePostController)
-router.get('/edit-profile', editTutorProfileGetController)
-router.post('/edit-profile', editTutorProfilePostController)
+module.exports = router
