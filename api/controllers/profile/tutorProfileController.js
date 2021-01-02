@@ -3,11 +3,11 @@ const Tutor = require('../../models/tutor/tutorModel')
 
 
 
-exports.getTutorProfileData = (req, res, next) => {
-    res.send('<h1>for get user profile information</h1>')
+exports.createTutorProfileGetController = (req, res, next) => {
+    res.send(`<h1>for get user profile information</h1> ${req.Tutor.phoneNumber}`)
 }
 
-exports.postTutorProfileData = (req, res, next) => {
+exports.createTutorProfilePostController = (req, res, next) => {
     try {
         let { name, email, bio, userProfilePic, links } = req.body
         const tutorProfile = new TutorProfile({
@@ -28,7 +28,16 @@ exports.postTutorProfileData = (req, res, next) => {
 }
 
 
-exports.editTutorProfileData = (req, res, next) => {
+exports.editTutorProfileGetController = (req, res, next) => {
+    try {
+
+    } catch (e) {
+        console.log(e)
+        next(e)
+    }
+}
+
+exports.editTutorProfilePostController = (req, res, next) => {
     try {
 
     } catch (e) {
