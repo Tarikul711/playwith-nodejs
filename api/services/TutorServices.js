@@ -8,7 +8,7 @@ exports.getTutorFromToken = async(req) => {
         if (req.headers.authorization) {
             const token = req.headers.authorization.split(" ")[1]
             if (token) {
-                const decodedToken = jwt.verify(token, 'TARIKUL711')
+                const decodedToken = jwt.verify(token, 'tos789')
                 let phoneNumber = decodedToken.phoneNumber
                 let tutor = await Tutor.findOne({ phoneNumber })
                 if (!tutor) {

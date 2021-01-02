@@ -26,7 +26,7 @@ exports.signinPostController = async(req, res, next) => {
         const token = jwt.sign({
                 phoneNumber: tutor.phoneNumber
             },
-            'TARIKUL711'
+            'tos789'
         )
         res.status(200).json({
             'data': tutor,

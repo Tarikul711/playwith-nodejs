@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
         if (req.headers.authorization) {
             const token = req.headers.authorization.split(" ")[1]
             if (token) {
-                const decodedToken = jwt.verify(token, 'TARIKUL711')
+                const decodedToken = jwt.verify(token, 'tos789')
                 req.userData = decodedToken
                 next()
             } else {
