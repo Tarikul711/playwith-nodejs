@@ -1,10 +1,17 @@
 const TutorProfile = require('../../models/tutor/tutorProfile')
 const Tutor = require('../../models/tutor/tutorModel')
+const TutorServices = require('../../services//TutorServices')
 
 
+exports.createTutorProfileGetController = async(req, res, next) => {
+    try {
+        let getTutor = await TutorServices.getTutorFromToken(req)
+        res.send(`<h1>for get user profile information</h1> ${getTutor.phoneNumber} = ${res}  - `)
+    } catch (e) {
+        console.log(e)
+        next(e)
+    }
 
-exports.createTutorProfileGetController = (req, res, next) => {
-    res.send(`<h1>for get user profile information</h1> ${req.body.tutor} = ${res}  - `)
 }
 
 exports.createTutorProfilePostController = (req, res, next) => {

@@ -3,7 +3,7 @@ const Tutor = require('../models/tutor/tutorModel')
 const jwt = require('jsonwebtoken')
 
 
-exports.getTutorFromToken() = async(req) => {
+exports.getTutorFromToken = async(req) => {
     try {
         if (req.headers.authorization) {
             const token = req.headers.authorization.split(" ")[1]
