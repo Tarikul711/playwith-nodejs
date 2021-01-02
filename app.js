@@ -13,7 +13,7 @@ const middleware = [
 ]
 app.use(middleware)
     // routers
-app.use('api/v1/tutor/', tutorAuthRouter)
+app.use('/api/v1/tutor/', tutorAuthRouter)
 app.get("/", (req, res, next) => {
     res.json({
         "message": "hello world"
@@ -25,6 +25,17 @@ app.get('*', (req, res) => {
 
 // server config 
 const PORT = process.env.PORT || 8000
-app.listen(PORT, () => {
-    console.log(`Server is running now  ${PORT}`)
-})
+
+
+mongoose
+    .connect('mongodb+srv://tos789:tos789@cluster0.0mj5x.mongodb.net/test', { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+    .then(() => {
+        console.log('database conntected')
+        app.listen(PORT, () => {
+            console.log(`Server is running ${PORT}`)
+        })
+    })
+    .catch(e => {
+        console.log(`This is the error ${ e }
+                    `)
+    })

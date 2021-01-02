@@ -1,12 +1,10 @@
 const { Schema, model } = require('mongoose')
 
 const tutorSchema = new Schema({
-    _id: Schema.Types.ObjectId,
     phoneNumber: {
         type: String,
         required: true,
-        unique: true,
-        match: /^(?:\+?88|0088)?01[15-9]\d{8}$ /
+        unique: true
     },
     password: {
         type: String,

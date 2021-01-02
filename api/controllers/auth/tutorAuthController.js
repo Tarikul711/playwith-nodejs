@@ -10,7 +10,7 @@ exports.signinGetController = (req, res, next) => {
 
 exports.signinPostController = async(req, res, next) => {
     try {
-        let (phoneNumber, password) = req.body
+        let { phoneNumber, password } = req.body
         let tutor = await Tutor.findOne({
             phoneNumber
         })
@@ -51,7 +51,7 @@ exports.signupPostController = async(req, res, next) => {
         let hashedPassword = await bcrypt.hash(password, 11)
         let tutor = new Tutor({
             phoneNumber,
-            password
+            password: hashedPassword
         })
         console.log(tutor)
         let createTutor = await tutor.save()
