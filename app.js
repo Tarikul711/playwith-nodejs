@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 
 const app = express()
 
+// routers
 app.get("/", (req, res, next) => {
     res.json({
         "message": "hello world"
