@@ -34,7 +34,7 @@ exports.createTutorProfilePostController = async(req, res, next) => {
         console.log(tutorProfile)
         let createTutorProfile = await tutorProfile.save()
         console.log('Tutor created successfully ', createTutorProfile)
-        res.status(200).json(createTutorProfile)
+        res.status(200).json({ 'data': createTutorProfile })
     } catch (e) {
         console.log(e)
         next(e)
@@ -45,24 +45,42 @@ exports.createTutorProfilePostController = async(req, res, next) => {
 exports.editTutorProfileGetController = async(req, res, next) => {
     try {
         let getTutorInfo = await TutorServices.getTutorFromToken(req)
-        console.log(getTutorInfo._id)
         let tProfileInfo = await TutorProfile.findOne({ tutor: getTutorInfo._id })
         if (!tProfileInfo) {
             return res.status(500).json({
                 'message': 'Profile does not exist.'
             })
         }
-        console.log(tProfileInfo.email)
-        res.json({ 'email': tProfileInfo.email })
+        console.log(tProfileInfo.email, tProfileInfo.name, tProfileInfo.userProfilePic)
+        res.json({ 'data': tProfileInfo })
     } catch (e) {
         console.log(e)
         next(e)
     }
 }
 
-exports.editTutorProfilePostController = (req, res, next) => {
+exports.editTutorProfilePostController = async(req, res, next) => {
     try {
+        let { name, email, bio, userProfilePic, links } = req.body
+        let getTutorInfo = await TutorServices.getTutorFromToken(req)
+        let tProfileInfo = await TutorProfile.findOne({ tutor: getTutorInfo._id })
+        if (!tProfileInfo) {
+            return res.status(500).json({
+                'message': 'Profile does not exist.'
+            })
+        }
 
+        let updatedProfileInfo = TutorProfile.findByIdAndUpdate(tProfileInfo._id, {
+                name: name,
+                email: email,
+                bio: bio,
+                userProfilePic: userProfilePic,
+                links: links
+            }, (error, data) => {
+                if (error) return res.send(500, { error: error })
+                return res.status(200).json({ 'data': data })
+            })
+            // res.status(200).json({ 'data': updatedProfileInfo })
     } catch (e) {
         console.log(e)
         next(e)
