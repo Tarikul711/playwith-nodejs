@@ -14,20 +14,27 @@ exports.createTutorProfileGetController = async(req, res, next) => {
 
 }
 
-exports.createTutorProfilePostController = (req, res, next) => {
+exports.createTutorProfilePostController = async(req, res, next) => {
     try {
+        let getTutorInformation = await TutorServices.getTutorFromToken(req)
         let { name, email, bio, userProfilePic, links } = req.body
+            // check is user profile exist in the collection ...
+        let tProfile = await TutorProfile.findOne({ tutor: getTutorInformation._id })
+        if (tProfile) {
+            return res.status(500).json({ 'message': 'User profile already exist. Please update it.' })
+        }
         const tutorProfile = new TutorProfile({
-                name,
-                email,
-                bio,
-                userProfilePic,
-                links
-            })
-            // console.log(tutorProfile)
-            // let createTutorProfile = await tutorProfile.save()
-            // console.log('Tutor created successfully ', createTutorProfile)
-            // res.status(200).json(createTutorProfile)
+            tutor: getTutorInformation._id,
+            name,
+            email,
+            bio,
+            userProfilePic,
+            links
+        })
+        console.log(tutorProfile)
+        let createTutorProfile = await tutorProfile.save()
+        console.log('Tutor created successfully ', createTutorProfile)
+        res.status(200).json(createTutorProfile)
     } catch (e) {
         console.log(e)
         next(e)

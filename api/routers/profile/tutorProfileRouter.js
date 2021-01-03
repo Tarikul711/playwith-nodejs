@@ -10,8 +10,8 @@ const {
 } = require('../../controllers/profile/tutorProfileController')
 
 router.get('/', checkAuth, createTutorProfileGetController)
-router.post('/', createTutorProfilePostController)
-router.get('/edit', editTutorProfileGetController)
-router.post('/edit', editTutorProfilePostController)
+router.post('/', checkAuth, createTutorProfilePostController)
+router.get('/edit', checkAuth, editTutorProfileGetController)
+router.post('/edit', checkAuth, editTutorProfilePostController)
 
 module.exports = router
