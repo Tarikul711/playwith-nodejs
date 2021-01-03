@@ -9,7 +9,8 @@ module.exports = (req, res, next) => {
                 req.userData = decodedToken
                 next()
             } else {
-                console.log('UnAuthorised user')
+                res.status(500).json({ 'message': 'Unauthorised user' })
+                next()
             }
         }
     } catch (e) {

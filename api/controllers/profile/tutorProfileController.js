@@ -42,9 +42,18 @@ exports.createTutorProfilePostController = async(req, res, next) => {
 }
 
 
-exports.editTutorProfileGetController = (req, res, next) => {
+exports.editTutorProfileGetController = async(req, res, next) => {
     try {
-
+        let getTutorInfo = await TutorServices.getTutorFromToken(req)
+        console.log(getTutorInfo._id)
+        let tProfileInfo = await TutorProfile.findOne({ tutor: getTutorInfo._id })
+        if (!tProfileInfo) {
+            return res.status(500).json({
+                'message': 'Profile does not exist.'
+            })
+        }
+        console.log(tProfileInfo.email)
+        res.json({ 'email': tProfileInfo.email })
     } catch (e) {
         console.log(e)
         next(e)
