@@ -8,7 +8,7 @@ const {
 } = require('../../controllers/tutorPost/tutorPostController')
 
 
-router.get('/tutor-post', tutorPostGetController)
-router.post('/tutor-post', tutorPostPostController)
+router.get('/tutor-post', checkAuth, tutorPostGetController)
+router.post('/tutor-post', checkAuth, tutorPostPostController)
 
 module.exports = router

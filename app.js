@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const mongoose = require('mongoose')
 const tutorAuthRouter = require('./api/routers/auth/tutorAuthRouter')
 const tutorProfileRouter = require('./api/routers/profile/tutorProfileRouter')
+const tutorPostRouter = require('./api/routers/tutorPost/tutorPostRouter')
 const app = express()
 
 // set all middleware 
@@ -16,6 +17,8 @@ app.use(middleware)
     // routers
 app.use('/api/v1/tutor/profile/', tutorProfileRouter)
 app.use('/api/v1/tutor/', tutorAuthRouter)
+app.use('/api/v1/post/', tutorPostRouter)
+
 app.get("/", (req, res, next) => {
     res.json({
         "message": "hello world"
