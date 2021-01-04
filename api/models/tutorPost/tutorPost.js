@@ -20,22 +20,22 @@ const tutorSchema = new Schema({
         type: String,
         trim: true
     },
-    location: {
+    location: [{
         type: String,
         trim: true
-    },
+    }],
     classess: {
         type: String,
         trim: true
     },
-    subject: {
+    subject: [{
         type: String,
         trim: true
-    },
-    package: {
+    }],
+    package: [{
         type: String,
         trim: true
-    },
+    }],
     isPrimem: {
         type: String,
         trim: true
@@ -47,3 +47,6 @@ const tutorSchema = new Schema({
 }, {
     timestamps: true
 })
+
+const TutorPost = model('TutorPost', tutorSchema)
+module.exports = TutorPost
