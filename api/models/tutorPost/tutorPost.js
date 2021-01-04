@@ -1,8 +1,9 @@
 const { Schema, model } = require('mongoose')
-    // title, description, salary/ Preferredlocation, Preferredclassess, Preferred subject,  package, isPrimem, time, sample video.
+
+// title, description, salary/ Preferredlocation, Preferredclassess, Preferred subject,  package, isPrimem, time, sample video.
 const tutorSchema = new Schema({
     tutor: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'Tutor',
         required: true
     },
@@ -28,11 +29,11 @@ const tutorSchema = new Schema({
         type: String,
         trim: true
     },
-    subject: [{
+    subjects: [{
         type: String,
         trim: true
     }],
-    package: [{
+    packages: [{
         type: String,
         trim: true
     }],
