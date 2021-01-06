@@ -10,7 +10,9 @@ exports.tutorPostGetController = async(req, res, next) => {
         res
             .status(200)
             .json({ 'data': tutorPostData })
-            // have to implement pagination adn seach option
+
+
+        // have to implement pagination adn seach option
     } catch (err) {
         console.log(err)
         next(err)
