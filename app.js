@@ -1,9 +1,9 @@
 const express = require('express')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
-const tutorAuthRouter = require('./api/routers/auth/tutorAuthRouter')
-const tutorProfileRouter = require('./api/routers/profile/tutorProfileRouter')
-const tutorPostRouter = require('./api/routers/tutorPost/tutorPostRouter')
+const tutorAuthRouter = require('./api_mysql/routers/auth/tutorAuthRouter')
+const tutorProfileRouter = require('./api_mysql/routers/profile/tutorProfileRouter')
+const tutorPostRouter = require('./api_mysql/routers/tutorPost/tutorPostRouter')
 const app = express()
 
 // set all middleware 
