@@ -2,10 +2,10 @@
     "name": "playwith-nodejs",
     "version": "1.0.0",
     "description": "",
-    "main": "app.js",
+    "main": "server.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon app.js"
+        "start": "nodemon server.js"
     },
     "repository": {
         "type": "git",
@@ -27,6 +27,8 @@
         "ejs": "^3.1.5",
         "express": "^4.17.1",
         "jsonwebtoken": "^8.5.1",
-        "mongoose": "^5.11.9"
+        "mongoose": "^5.11.9",
+        "mysql2": "^2.2.5",
+        "sequelize": "^6.3.5"
     }
 }
