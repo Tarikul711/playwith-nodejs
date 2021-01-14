@@ -2,10 +2,10 @@
     "name": "playwith-nodejs",
     "version": "1.0.0",
     "description": "",
-    "main": "server.js",
+    "main": "videoChat.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon server.js"
+        "start": "nodemon videoChat.js"
     },
     "repository": {
         "type": "git",
@@ -29,6 +29,8 @@
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.11.9",
         "mysql2": "^2.2.5",
-        "sequelize": "^6.3.5"
+        "sequelize": "^6.3.5",
+        "socket.io": "^3.0.5",
+        "uuid": "^8.3.2"
     }
 }
