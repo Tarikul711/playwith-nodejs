@@ -4,29 +4,26 @@ const server = require('http').Server(app)
 const io = require('socket.io')(server)
 const { v4: uuidV4 } = require('uuid')
 
-
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-app.get('/', (req, res, next) => {
+app.get('/', (req, res) => {
     res.redirect(`/${uuidV4()}`)
 })
 
-app.get('/:room', (req, res, next) => {
-    res.render('room.ejs', { roomId: req.params.room })
+app.get('/:room', (req, res) => {
+    res.render('room', { roomId: req.params.room })
 })
-
-// connect socket io
 
 io.on('connection', socket => {
     socket.on('join-room', (roomId, userId) => {
-        console.log(roomId, userId)
+        socket.join(roomId)
+        socket.to(roomId).broadcast.emit('user-connected', userId)
+
+        socket.on('disconnect', () => {
+            socket.to(roomId).broadcast.emit('user-disconnected', userId)
+        })
     })
 })
 
-
-// server config 
-const PORT = process.env.PORT || 8000
-server.listen(PORT, () => {
-    console.log('Server is running ')
-})
+server.listen(3000)
